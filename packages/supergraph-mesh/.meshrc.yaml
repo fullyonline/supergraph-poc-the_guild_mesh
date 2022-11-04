@@ -1,0 +1,34 @@
+serve:
+  port: 4500
+sources:
+  - name: Services
+    handler:
+      graphql:
+        endpoint: http://localhost:4100/graphql
+  - name: Cases
+    handler:
+      graphql:
+        endpoint: http://localhost:4200/graphql
+  - name: Patients
+    handler:
+      graphql:
+        endpoint: http://localhost:4000
+additionalTypeDefs: |
+  extend type ServiceAppointment {
+    patient: Patient
+  }
+
+# Programmaticle:
+#additionalResolvers:
+#  - './src/resolvers'
+
+# Definition:
+additionalResolvers:
+   - targetTypeName: ServiceAppointment
+     targetFieldName: patient
+     sourceName: Patients # Which source does the target field belong to?
+     sourceTypeName: Query # Which root type does the target field belong to?
+     sourceFieldName: patient # What is the source field name?
+     requiredSelectionSet: "{ patientNumber }"
+     sourceArgs: # What args does this need to take?
+       patientNumber: "{root.patientNumber}"

@@ -1,0 +1,19 @@
+{
+  "name": "supergraph-mesh",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "mesh dev"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@graphql-mesh/cli": "^0.78.35",
+    "@graphql-mesh/graphql": "^0.31.24",
+    "graphql": "^16.6.0"
+  }
+}
